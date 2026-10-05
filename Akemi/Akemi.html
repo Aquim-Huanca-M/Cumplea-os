@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Akemi!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1b1b3a 0%, #0b0b16 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Estrellas y destellos de fondo */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            box-shadow: 20px 50px #fff, 400px 120px #fff, 800px 300px #fff, 300px 500px #fff, 600px 700px #fff, 100px 600px #fff, 900px 200px #fff;
+            animation: twinkle 4s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.9; }
+        }
+
+        /* Contenedor principal estilo tarjeta */
+        .card {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px 20px;
+            background: rgba(20, 20, 40, 0.75);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Título principal con tipografía elegante */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            animation: floatText 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatText {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        /* Animación del pastel */
+        .cake-container {
+            margin: 25px auto;
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .cake {
+            font-size: 80px;
+            animation: bounceCake 2s infinite;
+        }
+
+        @keyframes bounceCake {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        /* Mensaje de felicitación */
+        p.message {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: #f0f0f0;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        /* Firma personalizada */
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: #ff9a9e;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 15px;
+            display: inline-block;
+            width: 80%;
+        }
+
+        /* Efecto confeti simple en CSS */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #ffd700;
+            animation: fall 5s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo de estrellas -->
+    <div class="stars"></div>
+
+    <!-- Tarjeta de Cumpleaños -->
+    <div class="card">
+        <h1>¡Feliz Cumpleaños, Akemi!</h1>
+        
+        <div class="cake-container">
+            <div class="cake">🎂</div>
+        </div>
+
+        <p class="message">
+            ¡Que tengas un día inolvidable, lleno de alegría, amor y magia! Que cada deseo se cumpla y este nuevo año venga cargado de grandes momentos de felicidad.
+        </p>
+
+        <div class="signature">
+            Con mucho cariño para ti
+        </div>
+    </div>
+
+    <!-- Script pequeño para generar confeti dinámico de fondo -->
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = '-10px';
+            confetti.style.backgroundColor = ['#ffd700', '#ff9a9e', '#a1c4fd', '#c2e9fb', '#ff758c'][Math.floor(Math.random() * 5)];
+            confetti.style.width = Math.random() * 8 + 5 + 'px';
+            confetti.style.height = confetti.style.width;
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        setInterval(createConfetti, 300);
+    </script>
+</body>
+</html>
